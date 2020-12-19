@@ -1,0 +1,39 @@
+ion-content{
+    --ion-background-color:#c6d5f3fa;
+}
+ion-item {
+    --ion-background-color: transparent !important
+  }
+
+ion-card{
+        margin-top: 7%;
+        background-color: #eaedf3;
+}
+ion-list{
+    background-color: #eaedf3;
+
+}
+ion-item{
+    background-color: #eaedf3;
+    max-width: 300px;
+    position: relative;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+}
+
+ img{
+    max-height: 80%;
+    max-width: 80%;
+}
+ion-button{
+    width: 150px;
+}
+.buttonAlert{
+    background-color: #73849a;
+    background: #73849a;  
+    }
+ion-card-title{
+    color: black;
+    font-size: 180%;
+}

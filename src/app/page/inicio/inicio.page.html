@@ -1,0 +1,86 @@
+
+<ion-header class="ion-text-center">
+  
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title >BiblioApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/add-bibliografy" >
+      <ion-icon  name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+    <div *ngIf="(bibliografys | async)?.length === 0">
+      <ion-grid  >
+        <ion-row  >
+          <ion-col  class=" ion-text-center      " >
+            <img src="assets/missingFile.png"/>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center " >
+          <ion-col class=" ion-text-center      " size="7" >
+            <h3>
+              Esta bastante tranquilo no crees?
+            </h3>         
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center ">
+          <ion-col class=" ion-text-center      " size="7">
+            <h6>
+              Agrega alguna bibliografia para comenzar 
+            </h6>                 
+          </ion-col>
+        </ion-row>
+      </ion-grid>  
+    </div>
+
+  
+          <ion-card *ngFor="let bibliografy of (bibliografys | async)" >
+            <ion-card-header>
+              <ion-card-title class="ion-text-center">{{bibliografy.titulopub}}</ion-card-title>
+              <ion-card-subtitle><strong>Identificador: </strong>{{bibliografy.idreferencia}}</ion-card-subtitle>
+              
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item></ion-item>
+              <div>
+                <strong> Autores:</strong> {{bibliografy.autores}} 
+              </div>
+              <strong> Tipo publicacion: </strong>
+              <div *ngIf="bibliografy.tipopub == 1 ; then revista else evento"></div>
+                <ng-template #revista>Articulo de revista </ng-template>
+                <ng-template #evento>
+                  <ng-container *ngIf="bibliografy.tipopub == 2;else otro">
+                    Articulo en evento
+                  </ng-container>
+                  </ng-template>
+                <ng-template #otro>Otro</ng-template>
+                <div>
+                </div>
+                <div *ngIf="bibliografy.eventorevista">
+                  <strong>  Nombre o revista en la que se publica:</strong> {{bibliografy.eventorevista}} 
+                </div>
+                <div *ngIf="bibliografy.doi">
+                  <strong>  Identificador único de documento:</strong> {{bibliografy.doi}} 
+                </div>
+                <div>
+                  <strong>  Año de publicación:</strong> {{bibliografy.anyopub}} 
+                </div>
+            </ion-card-content>
+            <ion-footer >
+              <ion-toolbar>          
+                <div class="buttons">
+                  <ion-button [routerLink]="['/info-bibliografy', bibliografy.idreferencia]"
+                  >Modificar</ion-button>
+                  <ion-button color="danger" (click)="alertDelete(bibliografy.idreferencia)">Eliminar</ion-button>
+                </div>
+              </ion-toolbar>
+            </ion-footer>
+          </ion-card>        
+
+
+  </ion-content>

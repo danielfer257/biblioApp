@@ -1,0 +1,26 @@
+ion-title{
+    margin-left: -50px;
+    color: #3880ff
+}
+strong{
+    color: black;
+}
+ion-item{
+    --min-height: 0px
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 35px;
+    margin-right: 35px;
+  }
+
+img{
+    margin-top: 10%;
+    margin-bottom: -30px;
+}
+h6{
+    margin-top: -5px;
+    color: #666666;
+}

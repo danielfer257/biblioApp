@@ -24,3 +24,23 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-toast.toast {
+    text-align: center ;
+    }
+
+    ion-note{
+        margin: 10px!important ;
+      }
+.buttonAlert button{
+    background: #3880ff !important;
+    color: white !important;
+    border-radius: 5px !important;
+}
+
+.buttonAlert .aceptar{
+    margin-left: 15px !important;
+    background: #eb445a !important;
+    color: white !important;
+    border-radius: 5px !important;
+}

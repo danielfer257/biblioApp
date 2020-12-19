@@ -1,0 +1,57 @@
+<ion-header class="ion-text-center">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>BiblioApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card >
+    <ion-card-content class="ion-text-center">
+      <form [formGroup]="bibliografyForm" (ngSubmit)="updateBibliografy()">
+        <h1>Modificar bibliografia</h1>
+        <ion-list>
+            <ion-item>
+                <ion-label position="floating">Identificador de la referencia</ion-label>
+                <ion-input disa type="number" disabled formControlName="idreferencia"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Titulo de la publicación</ion-label>
+                <ion-input type="text" formControlName="titulopub"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Autores</ion-label>
+                <ion-input type="text" formControlName="autores"></ion-input>
+            </ion-item>
+            
+            <ion-item>
+                <ion-label>Tipo de publicación</ion-label>
+                <ion-select type="number" formControlName="tipopub" placeholder="Seleccione uno">
+                <ion-select-option [value]="1">Articulo de revista</ion-select-option>
+                <ion-select-option [value]="2">Articulo en evento</ion-select-option>
+                <ion-select-option [value]="3">Otro</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Nombre o revista en la que se publica</ion-label>
+                <ion-input type="text" formControlName="eventorevista"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Identificador único de documento</ion-label>
+                <ion-input type="text" formControlName="doi"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Año de la publicación</ion-label>
+                <ion-input type="number" min="0" formControlName="anyopub"></ion-input>
+                <div *ngIf="bibliografyForm.get('anyopub').hasError('min')" class="cross-validation-error-message alert alert-danger">
+                  El año de publicación debe ser mayor a 0
+              </div>
+            </ion-item>
+        </ion-list>
+        <ion-button type="submit" [disabled]="!bibliografyForm.dirty || !bibliografyForm.valid" >Modificar</ion-button>
+    </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
